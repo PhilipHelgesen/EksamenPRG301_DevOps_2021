@@ -22,7 +22,7 @@ public class AccountTest {
     @Test
     public void testGetBalance(){
         Account account = new Account();
-        assertEquals(account.getBalance(), BigDecimal.valueOf(1));
+        assertEquals(account.getBalance(), BigDecimal.valueOf(0));
     }
 
     @Test
