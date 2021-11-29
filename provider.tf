@@ -15,3 +15,6 @@ terraform {
 resource "aws_ecr_repository" "ecr_repository" {
   name = "phhe002"
 }
+resource "aws_ecr_repository" "ecr_repository" {
+  name = "phhe002"
+}
