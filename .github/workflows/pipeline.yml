@@ -27,6 +27,7 @@ jobs:
 
   terraformMaster:
     name: "TerraformOnMaster"
+    environment: infra/
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
