@@ -1,3 +1,3 @@
-resource "aws_s3_bucket" "mybucket" {
-  bucket = "brabank-financial-reports"
+data "aws_s3_bucket" "b" {
+  bucket = "pgr301-phhe002-terraform"
 }
