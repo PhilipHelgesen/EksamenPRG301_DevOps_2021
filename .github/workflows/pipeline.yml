@@ -26,8 +26,8 @@ jobs:
         run: mvn -B package --file pom.xml
 
   terraformMaster:
+    environment: infra
     name: "TerraformOnMaster"
-    environment: infra/
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
 
