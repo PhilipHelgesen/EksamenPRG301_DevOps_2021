@@ -29,6 +29,8 @@ jobs:
     name: "TerraformOnMaster"
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
+
+
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
@@ -42,6 +44,7 @@ jobs:
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
 
+
       - name: Terraform Format
         id: fmt
         run: terraform fmt -check
@@ -49,6 +52,8 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
+        with:
+          working-dir: infra
 
       - name: Terraform Validate
         id: validate
