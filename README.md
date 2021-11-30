@@ -4,9 +4,7 @@
 
 ### Drøft 
 
-#### Beskriv med ord eller skjermbilder hvordan man kan konfigurere GitHub på en måte som git bedre kontroll på 
-utviklingsprosessen.
-Spesielt med tanke på å hindre kode som ikke kompilerer med og feilende tester fra å bli integrert i main branch.
+#### Beskriv med ord eller skjermbilder hvordan man kan konfigurere GitHub på en måte som gir bedre kontroll påutviklingsprosessen.Spesielt med tanke på å hindre kode som ikke kompilerer med og feilende tester fra å bli integrert i main branch.
 
 #### Konfigurer integrasjon med GitHub Actions i koden
 
@@ -21,22 +19,22 @@ Det kan være lurt å ha noen tester som kjører for å se om branch protection 
 
 #### Konfigurer branch protection på koden i GitHub med status check
 
-* Gå til setting of velg Branches fra listen på venstre side
-* Trykk på Add rule
+* Gå til settings og velg branches fra listen på venstre side
+* Trykk på `Add rule`
 
 ![img_4.png](images/img_4.png)
 
-* Skriv navn på branchen du vil beskytte og legg til `require status check to pass before merging`. Alle commits vil 
-* ha en status som definerer den(*error, failure, pending, success*). 
+* Skriv navn på branchen du vil beskytte og legg til `require status check to pass before merging`.
+* Alle commits vil ha en status som definerer den(*error, failure, pending, success*). 
   Ved å velge dette alternativet, så merger vi kun pull requests med status som `success` til branchen.
 
 ### Beskriv med ord eller skjermbilder hvordan GitHub kan konfigureres for å sikre at minst ett annet medlem av teamet har godkjent en pull request før den merges
 
-Her gjør vi nesten det samme som vi gjorde over. Vi konfigurerer GitHub actions helt likt. Det eneste som erforskjellig 
+Her gjør vi nesten det samme som vi gjorde over. Vi konfigurerer GitHub actions helt likt. Det eneste som er forskjellig 
 er hvilke regler du har på branch protection.
 
 #### Konfigurer branch protection på koden i GutHub med require approved pull request
-* 
+
 * Gå til settings og velg branches fra listen på venstre
 * Trykk på add rule
 * Her velger du `require a pull request before merging` og velger `Require approvals`. 
@@ -58,23 +56,20 @@ Når funksjonen eller oppgaven er klar for release, merger man den tilbake inn i
 
 Når man skal gi ut nye funksjoner, lages det en egen release branch av development branchen. Denne release branchen 
 blir gitt ut i et test-miljø, testet og problemer som oppdages fikset direkte i denne branchen.
-Denne syklusen`deploy -> fix -> redeploy -> retest` holder på helt til man er fornøyd nok til at den kal releases til 
+Denne syklusen`deploy -> fix -> redeploy -> retest` holder på helt til man er fornøyd nok til at den kan releases til 
 kunder.
 Nå merger vi release branchen med både main og development branchen slik at både kunden og utviklerene får den nyeste 
 versjonen av prosjektet.
 
 **Fordeler med GitFLow**
 1. Paralell utvikling blir enkelt ved å isolere nye funksjoner og merge tilbake når featuren er ferdig.
-2. Samarbeid mellom utviklere øker, spesielt hvis man bruker peer-review som beskrevet over. Funksjon er isolert. Og 
-3. man kan ha fullt fokus på den.
-4. Man har en egen developer branch hvor alle ferdige funksjoner ligger. Om man skal lage en ny funksjon inneholder 
-5. den branchen med alle de nye funksjonene som enda ikke er utgitt på main.
+2. Samarbeid mellom utviklere øker, spesielt hvis man bruker peer-review som beskrevet over. Funksjon er isolert. Og man kan ha fullt fokus på den.
+3. Man har en egen developer branch hvor alle ferdige funksjoner ligger. Om man skal lage en ny funksjon inneholder den branchen med alle de nye funksjonene som enda ikke er utgitt på main.
 
 ### Drøft
 
 #### SkalBank har bestemt seg for å bruke DevOps som underliggende prinsipp for all systemutvikling i banken. Er fordeling av oppgaver mellom API-teamet of "Team Dino" problematisk med dette som utgangspukt? Hvilke prinsipper er det som ikke etterleves her? Hva er i så fall konsekvensen av dette?
-fordelingen av oppgaver mellom API-teamet of "Team Dino" er problematisk. det å ha et team som jobber med manuelle tester gir dårlig flyt i produksjonen. Store systemer med lang levetid har et omfattende regine når man skal gjøre en full test av systemet
-Feilrettingsrunder med manuelle tester vil forekomme, da retting av de feilene de fant vil føre til enda flere feil. Da må man kjøre en ny full test!
+fordelingen av oppgaver mellom API-teamet of "Team Dino" er problematisk. Det å ha et team som jobber med manuelle tester gir dårlig flyt i produksjonen. Store systemer med lang levetid har et omfattende regime når man skal gjøre en full test av systemet feilrettingsrunder med manuelle tester vil forekomme, da retting av de feilene de fant vil føre til enda flere feil. Da må man kjøre en ny full test!
 Prinsippet som ikke følges her, er `automatiserte tester` og `waste med manuelle tester`
 
 Dette git også en arbeidsmoral til API-teamet om at "det er ikke så farlig" å release kode de vet har masse feil. Så lenge de leverer innen deres frist. Det er da opp til "Team Dino" å finne feilen(e).
@@ -82,7 +77,7 @@ Dette git også en arbeidsmoral til API-teamet om at "det er ikke så farlig" å
 Det beskrives i oppgaveteksten at det er mellom fem og ti utviklere som kontinuerlig comitter til main branch. Her etterleves ikke prinsippet om `kontinuerlig integrasjon` og `kontinuerlig leveranse`(CI/CD). Det å kjøre Trunk Basen Development istedenfor f.eks GitFlow har flere konsekvenser
 Det vlir mye mindre åpenhet i utviklingen og det er ingen som vet hva de andre holder på med. Det kjøres heller ingen tester eller kompilering av koden. Dette gjør det mye vanskeligere å rette opp eventuelle(uungåelige) feil i koden.
 
-Det tredje prinsippet som blir brutt er et puntk i Waste. Jeg antar at det går litt tid mellom hver gang "Jens" sender en JAR til "Team Dino". Og selv om det diskuteres om man skal ansette flere til "Team Dino", antar jeg at de "venter" på en ny JAR fil.
+Det tredje prinsippet som blir brutt er et punkt i Waste. Jeg antar at det går litt tid mellom hver gang "Jens" sender en JAR til "Team Dino". Og selv om det diskuteres om man skal ansette flere til "Team Dino", antar jeg at de "venter" på en ny JAR fil.
 Dette er imot `venting` prinsippet i Waste. Dessuten må de gjennom flere runder med tester noe som jeg ser på som en `unødvendighet` på grunn av `manuelle prosesser`.  
 
 # Oppgave-Feedback
@@ -102,9 +97,10 @@ Selsorn kan kjøre kall på `@Timed` anotasjonene jeg har lagt inn på de forskj
 #### Hvorfor funket terraform koden i dette repoet for "Jens" første gang det ble kjørt? Og hvorfor feiler det for alle andre etterpå, inkludert Jens etter at han ryddet på disken og slettet terraform.sfstate filen?
 `terraform.tfstate` inneholder terraform sin oversikt over hvordan infrastruktur og kode henter sammen. S3 kjører ikke i dette tilfellet i backend, men lokalt. Det vil si at etter Jens slettet `terraform.tfstate` filen, har heller ikke han oversikt over hvordan infrastrukturen og koden henger sammen.
 
-Med denne erroren betyr det at S3 bucketen har tidligere vært laget, som Jens hadde gjort. Man blir nøtt til å importere de eksisterende terraform konfigurasjonene fra S3 bucketen vedå hente den allerede opprettede state filem som er blitt lagret i S3 bucketen.
+Med denne erroren betyr det at S3 bucketen har tidligere vært laget, som Jens hadde gjort. Man blir nødt til å importere de eksisterende terraform konfigurasjonene fra S3 bucketen ved å hente den allerede opprettede state filem som er blitt lagret i S3 bucketen.
 
-Dette kan oppnås ved å bruke `data` istedenfor `resource` til å hente ut informasjon om infrastruktur som ligger i en AWS-konto. Og bruke denne informasjonen i infrastruktur koden. Selv om ikke de ressursene som man refererer til er en del av terraform koden på lokal maskin. Også kan man modifisere på den og lage andre ressurser som bruker den bucketen.
+Dette kan oppnås ved å bruke `data` istedenfor `resource` til å hente ut informasjon om infrastruktur som ligger i en AWS-konto. Og bruke denne informasjonen i infrastruktur koden. 
+Selv om ikke de ressursene som man refererer til er en del av terraform koden på lokal maskin. Også kan man modifisere på den og lage andre ressurser som bruker den bucketen.
 Man har altså ikke en referanse til bucketen fra før av, fordi man selv ikke har laget ressursen med terraform. 
 
 ### AWS CLI 
@@ -123,7 +119,7 @@ vi antar at sensor sitt bruker navn er `sensor`.
 er linjen man skriver dersom man vil konfigurere aws nøkler i CLI
 
 #### Inne i Console(UI)
-dersom man logger inn på console.aws.amazon.com siden og trykker på navnet sitt øverst i høyre hjørne. Faller en lyten meny ned. Her velger man `security credentials`. Da kommer man inn på en side som bilde under viser
+Dersom man logger inn på console.aws.amazon.com siden og trykker på navnet sitt øverst i høyre hjørne. Faller en lyten meny ned. Her velger man `security credentials`. Da kommer man inn på en side som bilde under viser
 Her kan vi trykke på `Create access key`, for å generere et par nøkler til oss.
 ![img.png](images/img.png)
 
