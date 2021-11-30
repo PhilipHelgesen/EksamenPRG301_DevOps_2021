@@ -8,7 +8,7 @@
 utviklingsprosessen.
 Spesielt med tanke på å hindre kode som ikke kompilerer med og feilende tester fra å bli integrert i main branch.
 
-####Konfigurer integrasjon med GitHub Actions i koden
+#### Konfigurer integrasjon med GitHub Actions i koden
 
 Med Github Actions kan man bygge, teste og deploye kode rett fra GitHub.
 * I repositoryet sitt lager man en katalog som heter `.github/workflows`.
@@ -19,7 +19,7 @@ Med Github Actions kan man bygge, teste og deploye kode rett fra GitHub.
 Dette er et eksempel tatt fra GitHub [exercise 3.0-cd-exercise](https://github.com/PGR301-2021/03-cd-exercise).
 Det kan være lurt å ha noen tester som kjører for å se om branch protection fungerer
 
-####Konfigurer branch protection på koden i GitHub med status check
+#### Konfigurer branch protection på koden i GitHub med status check
 
 * Gå til setting of velg Branches fra listen på venstre side
 * Trykk på Add rule
@@ -30,12 +30,12 @@ Det kan være lurt å ha noen tester som kjører for å se om branch protection 
 * ha en status som definerer den(*error, failure, pending, success*). 
   Ved å velge dette alternativet, så merger vi kun pull requests med status som `success` til branchen.
 
-###Beskriv med ord eller skjermbilder hvordan GitHub kan konfigureres for å sikre at minst ett annet medlem av teamet har godkjent en pull request før den merges
+### Beskriv med ord eller skjermbilder hvordan GitHub kan konfigureres for å sikre at minst ett annet medlem av teamet har godkjent en pull request før den merges
 
 Her gjør vi nesten det samme som vi gjorde over. Vi konfigurerer GitHub actions helt likt. Det eneste som erforskjellig 
 er hvilke regler du har på branch protection.
 
-####Konfigurer branch protection på koden i GutHub med require approved pull request
+#### Konfigurer branch protection på koden i GutHub med require approved pull request
 * 
 * Gå til settings og velg branches fra listen på venstre
 * Trykk på add rule
@@ -47,7 +47,7 @@ er hvilke regler du har på branch protection.
 2. Hjelper deg å lære fra andre utviklere og motsatt
 3. Kunnskaps overføring innad i utvikler teamet. Og forståelsen for hva de andre på teamet holder på med
 
-###Beskriv hvordan arbeidsflyten for hver enkelt utvikler bør være for å få en effektiv som mulig utviklingsprosess,spesielt hvordan hver enkelt utvikler bør jobbe med brancher i GitHub hver gang han eller hun starter en ny oppgave.
+### Beskriv hvordan arbeidsflyten for hver enkelt utvikler bør være for å få en effektiv som mulig utviklingsprosess,spesielt hvordan hver enkelt utvikler bør jobbe med brancher i GitHub hver gang han eller hun starter en ny oppgave.
 
 Arbeidsflyten for hver enkelt utvikler bør følge GitFlow. GitFlow er en branch model utviklet for Git.
 
@@ -72,7 +72,7 @@ versjonen av prosjektet.
 
 ### Drøft
 
-####SkalBank har bestemt seg for å bruke DevOps som underliggende prinsipp for all systemutvikling i banken. Er fordeling av oppgaver mellom API-teamet of "Team Dino" problematisk med dette som utgangspukt? Hvilke prinsipper er det som ikke etterleves her? Hva er i så fall konsekvensen av dette?
+#### SkalBank har bestemt seg for å bruke DevOps som underliggende prinsipp for all systemutvikling i banken. Er fordeling av oppgaver mellom API-teamet of "Team Dino" problematisk med dette som utgangspukt? Hvilke prinsipper er det som ikke etterleves her? Hva er i så fall konsekvensen av dette?
 fordelingen av oppgaver mellom API-teamet of "Team Dino" er problematisk. det å ha et team som jobber med manuelle tester gir dårlig flyt i produksjonen. Store systemer med lang levetid har et omfattende regine når man skal gjøre en full test av systemet
 Feilrettingsrunder med manuelle tester vil forekomme, da retting av de feilene de fant vil føre til enda flere feil. Da må man kjøre en ny full test!
 Prinsippet som ikke følges her, er `automatiserte tester` og `waste med manuelle tester`
@@ -85,8 +85,8 @@ Det vlir mye mindre åpenhet i utviklingen og det er ingen som vet hva de andre 
 Det tredje prinsippet som blir brutt er et puntk i Waste. Jeg antar at det går litt tid mellom hver gang "Jens" sender en JAR til "Team Dino". Og selv om det diskuteres om man skal ansette flere til "Team Dino", antar jeg at de "venter" på en ny JAR fil.
 Dette er imot `venting` prinsippet i Waste. Dessuten må de gjennom flere runder med tester noe som jeg ser på som en `unødvendighet` på grunn av `manuelle prosesser`.  
 
-#Oppgave-Feedback
-####Hvilke spørringer kan sensør gjøre for å analysere problemet?
+# Oppgave-Feedback
+#### Hvilke spørringer kan sensør gjøre for å analysere problemet?
 Selsorn kan kjøre kall på `@Timed` anotasjonene jeg har lagt inn på de forskjellige endepunktene
 
 `select sum from postAccountTimer`
@@ -97,7 +97,7 @@ Selsorn kan kjøre kall på `@Timed` anotasjonene jeg har lagt inn på de forskj
 
 ![img_2.png](images/img_2.png)
 ![img_3.png](images/img_3.png)
-#Oppgave-Terraform
+# Oppgave-Terraform
 ### Drøft
 #### Hvorfor funket terraform koden i dette repoet for "Jens" første gang det ble kjørt? Og hvorfor feiler det for alle andre etterpå, inkludert Jens etter at han ryddet på disken og slettet terraform.sfstate filen?
 `terraform.tfstate` inneholder terraform sin oversikt over hvordan infrastruktur og kode henter sammen. S3 kjører ikke i dette tilfellet i backend, men lokalt. Det vil si at etter Jens slettet `terraform.tfstate` filen, har heller ikke han oversikt over hvordan infrastrukturen og koden henger sammen.
@@ -107,7 +107,7 @@ Med denne erroren betyr det at S3 bucketen har tidligere vært laget, som Jens h
 Dette kan oppnås ved å bruke `data` istedenfor `resource` til å hente ut informasjon om infrastruktur som ligger i en AWS-konto. Og bruke denne informasjonen i infrastruktur koden. Selv om ikke de ressursene som man refererer til er en del av terraform koden på lokal maskin. Også kan man modifisere på den og lage andre ressurser som bruker den bucketen.
 Man har altså ikke en referanse til bucketen fra før av, fordi man selv ikke har laget ressursen med terraform. 
 
-###AWS CLI 
+### AWS CLI 
 dersom sensor ønsker å lage en bucket kan man bruke kommandolinjen 
 
 `aws s3api create-bucket --bucket my-bucket --region eu-west-1`
@@ -128,7 +128,7 @@ Her kan vi trykke på `Create access key`, for å generere et par nøkler til os
 ![img.png](images/img.png)
 
 
-###Terraform kode
+### Terraform kode
 for å lage et ECR repository i koden skriver man følgende kode i en infra .tf fil: 
 ```
 resource "aws_ecr_repository" "my_repo"{
@@ -142,9 +142,9 @@ resource "aws_ecr_repository" "my_repo"{
 # Oppgave-Docker
 #### Kommandolinje for å bygge et image:
 `docker build . --tag skalbank --build-arg JAR_FILE=target/demo-0.0.1-SNAPSHOT.jar`
-####Kommandolinje for å starte en container
+#### Kommandolinje for å starte en container
 `docker run skalbank:latest`
-####Kommandolinje for å starte to containere samtidig, uten port-konflikt
+#### Kommandolinje for å starte to containere samtidig, uten port-konflikt
 `docker run -p 7777:8080 skalbank:latest`
 
 `docker run -p 8888:8080 skalbank:latest`
