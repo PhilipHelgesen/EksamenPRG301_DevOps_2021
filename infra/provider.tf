@@ -14,4 +14,8 @@ terraform {
 
 resource "aws_ecr_repository" "ecr_repository" {
   name = "phhe002"
+
+  image_scanning_configuration{
+    scan_on_push = true
+  }
 }
