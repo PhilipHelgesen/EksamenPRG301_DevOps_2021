@@ -11,7 +11,3 @@ terraform {
     region = "eu-west-1"
   }
 }
-
-resource "aws_ecr_repository" "ecr_repository" {
-  name = "phhe002"
-}
