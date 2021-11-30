@@ -29,21 +29,19 @@ jobs:
     name: "TerraformOnMaster"
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
-
-
     env:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: eu-west-1
+    defaults:
+      run:
+        working-directory: infra
     steps:
-
-
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Setup Terraform
         uses: hashicorp/setup-terraform@v1
-
 
       - name: Terraform Format
         id: fmt
@@ -52,17 +50,14 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: infra
 
       - name: Terraform Validate
         id: validate
         run: terraform validate -no-color
 
-
       - name: Terraform Apply
         if: github.ref == 'refs/heads/master' && github.event_name == 'push'
         run: terraform apply -auto-approve
-        working-directory: infra
 
 
   terraform:
@@ -73,6 +68,9 @@ jobs:
       AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       AWS_REGION: eu-west-1
+    defaults:
+      run:
+        working-directory: infra
     steps:
 
       - name: Checkout
@@ -88,7 +86,7 @@ jobs:
       - name: Terraform Init
         id: init
         run: terraform init
-        working-directory: infra
+
 
       - name: Terraform Validate
         id: validate
@@ -97,7 +95,6 @@ jobs:
       - name: Terraform Plan
         id: plan
         run: terraform plan -no-color
-        working-directory: infra
         continue-on-error: false
 
       - uses: actions/github-script@0.9.0
